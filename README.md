@@ -1,5 +1,5 @@
 "# Automation_Project" 
-This project consist of bash script which perform the following task:
+This project consist of bash script which will perform the following task:
 1)First , it will perform an update of the package details and the package list at the start of the script.
 2)Install the apache2 package if it is not already installed. 
 3)Ensure that the apache2 service is running and enabled.
