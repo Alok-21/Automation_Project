@@ -1,5 +1,5 @@
 #!bin/bash
-
+sudo apt update -y
 name=Alok
 s3=upgrad-alok
 a=$(dpkg --get-selections | grep apache2)
