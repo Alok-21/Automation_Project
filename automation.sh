@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 sudo apt update -y
 name=Alok
 s3=upgrad-alok
@@ -10,7 +10,7 @@ then
       echo -e "Apache2 is not installed \ninstalling it."
      sudo apt install apache2 -y
 else
-        echo "Apache2 is already installed"
+        echo "Apache2 is already installed."
 fi
 
 b=$(systemctl is-active apache2)
