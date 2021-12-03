@@ -1,3 +1,4 @@
+
 #!/bin/bash
 apt update -y
 name=Alok
@@ -77,7 +78,5 @@ else
         echo -e "cron job is not scheduled \n scheduling the cron job"
         touch /etc/cron.d/automation
         echo "0 0 * * * root /root/Automation_Project/automation.sh" > /etc/cron.d/automation
-        echo "Cron job is scheduled now"
-
+        echo "Cron job has been scheduled now"
 fi
-
