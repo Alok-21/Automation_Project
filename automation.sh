@@ -2,7 +2,7 @@
 #!/bin/bash
 apt update -y
 name=Alok
-s3=upgrad-alok
+s3=alok
 a=$(dpkg --get-selections | grep apache2)
 
 
