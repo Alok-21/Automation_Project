@@ -1,9 +1,0 @@
-- name: Example Playbook
-  hosts: localhost
-  tasks:
-    - name: Start Application
-      debug:
-        msg: "Starting the application on port {{ app_port }}"
-    - name: Connect to Database
-      debug:
-        msg: "Connecting to database on host {{ db_host }} with user {{ db_user }}"
