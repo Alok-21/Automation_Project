@@ -1,0 +1,1055 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "id": "http://ericsson.com/vnfd-501a9928-d065-4ce9-b158-3b9645e74332/flavour-default/sol002-2.4.1/instantiate_inputs_schema.json",
+  "properties": {
+    "additionalParams": {
+      "additionalProperties": false,
+      "description": "Specific additional parameters defined by the VNF package.",
+      "properties": {
+        "DNS_server_1_address": {
+          "default": "none",
+          "description": "The IP address of the DNS server the VNF should interact with to resolve domain names. The IP address can be in either IPv4 or IPv6 format. For example, 163.168.48.202 or 2001:4860:4860::2020",
+          "type": "string"
+        },
+        "DNS_server_2_address": {
+          "default": "none",
+          "description": "The IP address of the DNS server the VNF should interact with to resolve domain names. The IP address can be in either IPv4 or IPv6 format. For example, 163.168.48.202 or 2001:4860:4860::2020",
+          "type": "string"
+        },
+        "NTP_server_1_address": {
+          "default": "none",
+          "description": "The IP address or host name of the NTP server the VNF should connect with for network time synchronisation. The IP address can be in either IPv4 or IPv6 format. For example, 134.168.48.200 or 2021:4860:4860::2000 or pool.ntp.org",
+          "type": "string"
+        },
+        "NTP_server_2_address": {
+          "default": "none",
+          "description": "The IP address or host name of the NTP server the VNF should connect with for network time synchronisation. The IP address can be in either IPv4 or IPv6 format. For example, 134.168.48.200 or 2021:4860:4860::2000 or pool.ntp.org",
+          "type": "string"
+        },
+        "OM_IPv4_address": {
+          "description": "The IPv4 address over which the Operations and Maintenance systems will communicate with the VNF. The address should be selected from the O&M subnet specified by the value of om_subnet_IPv4_address.",
+          "type": "string"
+        },
+        "OM_gateway_IPv4_address": {
+          "description": "This is the IPv4 address from the router acting as the gateway for the O&M interface. The address should be selected from the O&M subnet specified by the value of om_subnet_IPv4_address.",
+          "type": "string"
+        },
+        "cscf_config_path": {
+          "description": "Optional. Specify a path on the VNF Manager filesystem to search for PDB bundles. Relative shorthand paths may be used, these will be assumed to be relative to the \"vnf_configuration_repo\" directory. Relative folder path example: \"vCSCF/vCSCF_Site1_A\"; absolute path example: \"/vnflcm-ext/current/vnf_configuration_repo/vCSCF/config1/\".",
+          "pattern": "[A-Za-z0-9\\-_\\./]*",
+          "type": "string"
+        },
+        "diacx_vip4": {
+          "default": "none",
+          "description": "VIP IPv4 Address of CX interface",
+          "type": "string"
+        },
+        "diacx2_vip4": {
+          "default": "none",
+          "description": "VIP IPv4 Address of CX2 interface",
+          "type": "string"
+        },
+        "diarf_vip4": {
+          "default": "none",
+          "description": "VIP IPv4 Address of RF interface",
+          "type": "string"
+        },
+        "diaro_vip4": {
+          "default": "none",
+          "description": "VIP IPv4 Address of RO interface",
+          "type": "string"
+        },
+        "diarx_vip4": {
+          "default": "none",
+          "description": "VIP IPv4 Address of RX interface",
+          "type": "string"
+        },
+        "ecscf_vip4": {
+          "default": "none",
+          "description": "VIP IPv4 Address of ECSCF SIP interface",
+          "type": "string"
+        },
+        "emergency_password_hash": {
+          "description": "The hash of Emergency user password. A hash can be generated with: mkpasswd -m sha-512 MySecretPassword It is also possible to use: python3 -c 'import getpass,crypt;print(crypt.crypt(getpass.getpass()))'",
+          "type": "string"
+        },
+        "emergency_username": {
+          "default": "maintenance",
+          "description": "The Emergency username to be used at deployment",
+          "type": "string"
+        },
+        "icscf_vip4": {
+          "default": "none",
+          "description": "VIP IPv4 Address of ICSCF SIP interface",
+          "type": "string"
+        },
+        "internal_net_allocation_pool_end": {
+          "default": "169.254.100.100",
+          "description": "End (inclusive) of IP pool to configure on the ipv4 subnet of network internal_net. The provided value must be within the network defined by parameter 'internal_net_cidr'. Values outside the pool will not be dynamically assigned to ports by the networking agent.",
+          "type": "string"
+        },
+        "internal_net_allocation_pool_start": {
+          "default": "169.254.100.1",
+          "description": "Start (inclusive) of IP pool to configure on the ipv4 subnet of network internal_net. The provided value must be within the network defined by parameter 'internal_net_cidr'. Values outside the pool will not be dynamically assigned to ports by the networking agent.",
+          "type": "string"
+        },
+        "internal_net_cidr": {
+          "default": "169.254.100.0/24",
+          "description": "The CIDR to be used for the IPv4 subnet on network internal_net",
+          "type": "string"
+        },
+        "internal_net_mtu": {
+          "default": 1500,
+          "description": "MTU of nw_iternal Neutron network",
+          "maximum": 9000,
+          "minimum": 1280,
+          "type": "integer"
+        },
+        "internal_sysmgmt_net_cidr": {
+          "default": "169.254.101.0/24",
+          "description": "The CIDR to be used for the IPv4 subnet on network internal_sysmgmt_net. Must be different from internal_net_cidr",
+          "type": "string"
+        },
+        "interval_timeout": {
+          "default": 10,
+          "description": "Every interval_timeout seconds a ping is sent to the watchdog device by the watchdog deamon",
+          "maximum": 1000,
+          "minimum": 5,
+          "type": "integer"
+        },
+        "kernel_control": {
+          "default": "none",
+          "description": "Control kernel parameters This parameter is for enabling/disabling mitigations for Spectre Meltdown vulnerability in Control (SC) kernel. Set the parameter to \"none\" if it is not used. Supported parameter is 'mitigations=off' Attention! Please consider that this parameter has to be done by the consent of the customers after they performed a risk assessment and decided that disabling speculative execution mitigations on payloads is an acceptable risk. Disabling mitigations can improve system performance, but it can also expose the system to vulnerabilities which can lead to disclosure of sensitive information including passwords, certificate keys and other system and end-user data. Please note that this only affects the VNF/VM level mitigations, not the NFVI/hypervisor layer mitigations.",
+          "type": "string"
+        },
+        "kernel_payload": {
+          "default": "none",
+          "description": "Payload kernel parameters This parameter is for enabling/disabling mitigations for Spectre Meltdown vulnerability in Payload (PL) kernel. Set the parameter to \"none\" if it is not used. Supported parameter is 'mitigations=off' Attention! Please consider that this parameter has to be done by the consent of the customers after they performed a risk assessment and decided that disabling speculative execution mitigations on payloads is an acceptable risk. Disabling mitigations can improve system performance, but it can also expose the system to vulnerabilities which can lead to disclosure of sensitive information including passwords, certificate keys and other system and end-user data. Please note that this only affects the VNF/VM level mitigations, not the NFVI/hypervisor layer mitigations.",
+          "type": "string"
+        },
+        "lcm_mip_address_override": {
+          "description": "Optional. Specifies the mip address the VNFM should use to connect to the cluster.",
+          "type": "string"
+        },
+        "manual_backup_file": {
+          "description": "URI that is used to store the CSCF manual backup file. Syntax: \"sftp://user@host/path/export.tar.gz\" or \"file:///path/export.tar.gz\"",
+          "type": "string"
+        },
+        "manual_backup_restore_is_upgrade": {
+          "default": false,
+          "description": "Set this to true, if during the non-LCM to LCM managed cluster transformation you are also performing a vCSCF image upgrade, meaning the version of the vCSCF image you instantiated from the VNF-LCM is newer than the vCSCF image version used for the old non-LCM managed cluster.",
+          "type": "boolean"
+        },
+        "manual_backup_sftp_password": {
+          "description": "Cleartext password of the sftp user defined in externalBackupURI Mandatory when externalBackup is true.",
+          "type": "string"
+        },
+        "manual_backup_type": {
+          "default": "LOCAL_FULL_BACKUP",
+          "description": "Set this to: LOCAL_FULL_BACKUP -\n  if config_only mode was Disabled during the backup creation (configexport)\n  and the exported_data.tar.gz file is located on the VNF-LCM\nLOCAL_CONFIGONLY_BACKUP -\n  if config_only mode was Enabled  during the backup creation (COM CLI backup)\n  and the exported_data.tar.gz file is located on the VNF-LCM\nEXTERNAL_CONFIGONLY_BACKUP -\n  if config_only mode was Enabled  during the backup creation (COM CLI backup)\n  and the exported_data.tar.gz file is located on an external SFTP server",
+          "enum": [
+            "LOCAL_FULL_BACKUP",
+            "LOCAL_CONFIGONLY_BACKUP",
+            "EXTERNAL_CONFIGONLY_BACKUP"
+          ],
+          "type": "string"
+        },
+        "nels_ccau_host": {
+          "default": "none",
+          "description": "The hostname, or address, of the NeLS CCAU server",
+          "type": "string"
+        },
+        "nels_ccau_tls_port": {
+          "default": 9090,
+          "description": "The TLS port number of the NeLS CCAU server",
+          "maximum": 65535,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "nels_customer_id": {
+          "default": "none",
+          "description": "The customer id in the NeLS server",
+          "type": "string"
+        },
+        "nels_host": {
+          "default": "none",
+          "description": "The hostname, or address, of the NeLS server",
+          "type": "string"
+        },
+        "nels_port": {
+          "default": 9095,
+          "description": "The port number of the NeLS server",
+          "maximum": 65535,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "nels_swlt_id": {
+          "default": "none",
+          "description": "The software license target id in the NeLS server",
+          "type": "string"
+        },
+        "om_subnet_IPv4_address": {
+          "description": "This is the range of IPv4 addresses allocated to the O&M interface, for example, 192.168.0.0/29",
+          "type": "string"
+        },
+        "ossTopology.addVNFToOSS": {
+          "default": false,
+          "description": "The value indicates whether the workflow adds the network element to ENM after the created VNF is successfully instantiated. Access and credentials to ENM must be pre-configured in the VNF Manager for this to be possible.",
+          "type": "boolean"
+        },
+        "ossTopology.associatedSite": {
+          "description": "Associated Site of ENM. It is mandatory if ossTopology.addVNFToOSS parameter is set to true.",
+          "type": "string"
+        },
+        "ossTopology.managedElementSrcType": {
+          "default": "CBA",
+          "description": "The Src type of network element. It should be \"CBA\". In ENM, this parameter will not be used.",
+          "enum": [
+            "CBA"
+          ],
+          "type": "string"
+        },
+        "ossTopology.netConfPort": {
+          "default": 830,
+          "description": "NetConf port number. Mandatory in case of ENM, for vCSCF it should be 830.",
+          "maximum": 65535,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "ossTopology.networkElementPassword": {
+          "description": "The password for logon by ENM to the instantiated vCSCF. The password must be base64 encoded. It is mandatory when ossTopology.addVNFToOSS parameter is set to true. The value cannot contain the following special characters: '!?;|\\'.",
+          "type": "string"
+        },
+        "ossTopology.networkElementType": {
+          "default": "vCSCF",
+          "description": "The Network element type. For ENM, it should be 'vCSCF'.",
+          "enum": [
+            "vCSCF"
+          ],
+          "type": "string"
+        },
+        "ossTopology.networkElementUsername": {
+          "default": "maintenance",
+          "description": "Username for login by ENM. The username cannot be ericsson or vnf_lcm_user. It is mandatory when ossTopology.addVNFToOSS parameter is set to true.",
+          "minLength": 1,
+          "type": "string"
+        },
+        "ossTopology.networkElementVersion": {
+          "default": "1.20.0",
+          "description": "Version of the network element. For ENM, this parameter refers to ossModelIdentity such as 1.20.0. Execute the command cmedit describe --neType vCSCF in ENM to get the available network element version. Mandatory when ossTopology.addVNFToOSS parameter is set to true.",
+          "minLength": 1,
+          "type": "string"
+        },
+        "ossTopology.nodeIpAddress": {
+          "description": "OAM service IP address of the instantiated VNF instance. Must be reachable from ENM, with the specified username and password. Both IPv4 and IPv6 formats are supported. Mandatory when ossTopology.addVNFToOSS parameter is set to true.",
+          "type": "string"
+        },
+        "ossTopology.snmpAuthPassword": {
+          "description": "Optional. Automatically generated if not provided or is empty string. It is recommended to leave this blank to generate a value automatically and securely. SNMP Password to use for authentication with the provided authentication algorithm for security. The password must be encoded with base64. It must be 8 characters minimum (12 after encoding). Applicable only when snmpSecurityLevel is set to AUTH_PRIV or AUTH_NO_PRIV.",
+          "pattern": "^$|.{12,}",
+          "type": "string"
+        },
+        "ossTopology.snmpAuthProtocol": {
+          "default": "SHA1",
+          "description": "SNMP Authentication algorithm used to authorize the identity of the user. Mandatory when snmpSecurityLevel is set to AUTH_PRIV or AUTH_NO_PRIV. SHA1 is recommended.",
+          "enum": [
+            "MD5",
+            "SHA1"
+          ],
+          "type": "string"
+        },
+        "ossTopology.snmpPort": {
+          "default": 161,
+          "description": "The SNMP port number in the VNF.",
+          "enum": [
+            161
+          ],
+          "type": "integer"
+        },
+        "ossTopology.snmpPrivProtocol": {
+          "default": "AES128",
+          "description": "SNMP Privacy algorithm used for encryption of SNMPv3 messages. Mandatory when snmpSecurityLevel is set to AUTH_PRIV. AES128 is recommended.",
+          "enum": [
+            "DES",
+            "AES128"
+          ],
+          "type": "string"
+        },
+        "ossTopology.snmpPrivacyPassword": {
+          "description": "Optional. Automatically generated if not provided. It is recommended to leave this blank to generate a value automatically and securely. SNMP Password to use for encryption with the provided encryption algorithm for security. The password must be encoded with base64. It must be 8 characters minimum (12 after encoding). Applicable only when snmpSecurityLevel is set to AUTH_PRIV.",
+          "pattern": "^$|.{12,}",
+          "type": "string"
+        },
+        "ossTopology.snmpSecurityLevel": {
+          "default": "AUTH_PRIV",
+          "description": "Not applicable for snmpVersion \"V2c\". Mandatory when snmpVersion is set to SNMP_V3. ENM supports three security levels: AUTH_PRIV (encrypted and authenticated), AUTH_NO_PRIV (authenticated but cleartext) and NO_AUTH_NO_PRIV (same security as V2c).",
+          "enum": [
+            "AUTH_PRIV",
+            "AUTH_NO_PRIV",
+            "NO_AUTH_NO_PRIV"
+          ],
+          "type": "string"
+        },
+        "ossTopology.snmpVersion": {
+          "default": "SNMP_V3",
+          "description": "The SNMP Version. It is mandatory when ossTopology.addVNFToOSS parameter is set to true. Encryption and authentication is only available with SNMP_V3.",
+          "enum": [
+            "V2c",
+            "SNMP_V3"
+          ],
+          "type": "string"
+        },
+        "ossTopology.subNetworks": {
+          "description": "The subnetwork is used for logical grouping of VNFs within ENM. The subnetwork can contain one or more subnetworks. The subnetwork must be separated by a comma, such as \"SubNetwork=NetW1,SubNetwork=NetW2\".",
+          "pattern": "^$|SubNetwork=[A-Za-z0-9_\\-#@\\[\\]]+(,SubNetwork=[A-Za-z0-9_\\-#@\\[\\]]+)*",
+          "type": "string"
+        },
+        "pcscf_vip4": {
+          "default": "none",
+          "description": "VIP IPv4 Address of PCSCF SIP interface",
+          "type": "string"
+        },
+        "pl_availability_zones": {
+          "default": [
+            "nova",
+            "nova"
+          ],
+          "description": "The availability zones to be used for the pl VNFC of the vcscf VNF.The Nth VNFC instance uses the Nth zone in the list. The number of zones must be equal to the maximum number of VNFC instances. This parameter is not applicable when an NFVO is present.",
+          "items": {
+            "pattern": "[^,]*",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "pl_flavor": {
+          "default": "20vcpu_59392MBmem",
+          "description": "The flavor to be used for VMs part of pl VNFC in vcscf VNF. This parameter is not applicable when an NFVO is present.",
+          "type": "string"
+        },
+        "pl_image": {
+          "default": "pxeboot",
+          "description": "The image to be used for VMs part of pl VNFC in vcscf VNF. This parameter is not applicable when an NFVO is present.",
+          "type": "string"
+        },
+        "pl_scalable_availability_zone": {
+          "default": "nova",
+          "description": "The availability zone to be used for the pl_scalable VNFC of the vcscf VNF. This parameter is not applicable when an NFVO is present.",
+          "type": "string"
+        },
+        "pl_scalable_flavor": {
+          "default": "20vcpu_59392MBmem",
+          "description": "The flavor to be used for VMs part of pl_scalable VNFC in vcscf VNF. This parameter is not applicable when an NFVO is present.",
+          "type": "string"
+        },
+        "pl_scalable_image": {
+          "default": "pxeboot",
+          "description": "The image to be used for VMs part of pl_scalable VNFC in vcscf VNF. This parameter is not applicable when an NFVO is present.",
+          "type": "string"
+        },
+        "root_password_hash": {
+          "description": "The hash of root user password. A hash can be generated with: mkpasswd -m sha-512 MySecretPassword It is also possible to use: python3 -c 'import getpass,crypt;print(crypt.crypt(getpass.getpass()))'",
+          "type": "string"
+        },
+        "sc_Vol_volume_availability_zones": {
+          "default": [
+            "nova",
+            "nova"
+          ],
+          "description": "The volume availability zones to be used for the Vol volume of sc VNFC of the vcscf VNF, which corresponds to storage_az in cinder conf. The Nth VNFC instance uses the Nth zone in the list. The number of zones must be equal to the maximum number of VNFC instances.",
+          "items": {
+            "pattern": "[^,]*",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "sc_availability_zones": {
+          "default": [
+            "nova",
+            "nova"
+          ],
+          "description": "The availability zones to be used for the sc VNFC of the vcscf VNF.The Nth VNFC instance uses the Nth zone in the list. The number of zones must be equal to the maximum number of VNFC instances. This parameter is not applicable when an NFVO is present.",
+          "items": {
+            "pattern": "[^,]*",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "sc_flavor": {
+          "default": "16vcpu_32768MBmem",
+          "description": "The flavor to be used for VMs part of sc VNFC in vcscf VNF. This parameter is not applicable when an NFVO is present.",
+          "type": "string"
+        },
+        "sc_image": {
+          "default": "CSCF_SC1_1.26.2-1",
+          "description": "The image to be used for VMs part of sc VNFC in vcscf VNF. This parameter is not applicable when an NFVO is present.",
+          "type": "string"
+        },
+        "scscf_vip4": {
+          "default": "none",
+          "description": "VIP IPv4 Address of SCSCF SIP interface",
+          "type": "string"
+        },
+        "secla_password_hash": {
+          "description": "The hash of SecLa user password. A hash can be generated with: mkpasswd -m sha-512 MySecretPassword It is also possible to use: python3 -c 'import getpass,crypt;print(crypt.crypt(getpass.getpass()))'",
+          "type": "string"
+        },
+        "shutdown_timeout": {
+          "default": 600,
+          "description": "When the watchdog deamon is stopped, the time that watchdog device waits is set to shutdown_timeout value (seconds)",
+          "maximum": 3600,
+          "minimum": 60,
+          "type": "integer"
+        },
+        "time_zone": {
+          "default": "Europe/Stockholm",
+          "description": "The value define the time zone the node should use while in operation. The format of the assigned time zone should be one international recognised formats for a time zone.",
+          "type": "string"
+        },
+        "watchdog_timeout": {
+          "default": 30,
+          "description": "Time frame from the last received ping until the watchdog device triggers",
+          "maximum": 600,
+          "minimum": 10,
+          "type": "integer"
+        },
+        "workflow_disableAutoRollback": {
+          "default": false,
+          "description": "Optional. May be used for troubleshooting purposes. If left on `false` (the default), then the Heat stack will be deleted in case an error occurs during its creation. If set to 'true', and a failure occurs in the creation step, the faulty Heat stack will be persisted as an instantiated (but not functional) VNF, and it may be forcefully terminated later.",
+          "type": "boolean"
+        },
+        "workflow_lcmScriptTimeout": {
+          "default": 3600,
+          "description": "The timeout of LCM hooks, in seconds. The value should never less than 1800 (= 30 minutes).",
+          "minimum": 1800,
+          "type": "integer"
+        },
+        "workflow_vnfInstanceNameInVim": {
+          "description": "Optional. Specifies the Heat stack name to use for the VNF resources. Alphanumerics, dashes and underscores are allowed. If not provided or left blank, the VNF instance's name will be used for this purpose.",
+          "pattern": "[A-Za-z0-9\\-_]*",
+          "type": "string"
+        }
+      },
+      "required": [
+        "OM_IPv4_address",
+        "OM_gateway_IPv4_address",
+        "emergency_password_hash",
+        "om_subnet_IPv4_address",
+        "root_password_hash",
+        "secla_password_hash"
+      ],
+      "type": "object"
+    },
+    "extConnectionPoints": {
+      "additionalProperties": false,
+      "description": "Parameters for VNF external connection points.\n\nextVirtualLink: Reference to the name in the extVirtualLinks section. Must not be changed.\n\nnumInstances: Number of instances to configure for this connection point. For normal connection points it should be left at default (max number of VNFC instances) to allow full scale out. For VIP connection points it must be left at default (always 1 instance).\n\nsubnetId: The id of an existing subnet in the VIM. May not be applicable, depending on the VNF package. Never applicable for the vCloud Director VIM.\n\nnumAddressesPerInstance: Number of IP addresses to configure per instance. Should be left at its default value (min number of IP addresses as defined in the VNFD), unless VNF documentation says higher values are supported.\n\nfixedAddresses: String with comma-separated IPs and/or a range of IPs, for example \"10.0.0.1,10.0.0.5-10.0.0.8\". For IPv4, the shorthand \"10.0.0.5-8\" is also usable. The number of IPs must be at least numInstances * numAddressesPerInstance. Not applicable when the connection point uses dynamic IP allocation.",
+      "properties": {
+        "pl-3_vipfrontend1": {
+          "additionalProperties": false,
+          "properties": {
+            "extVirtualLink": {
+              "default": "vipfrontend1",
+              "enum": [
+                "vipfrontend1"
+              ],
+              "type": "string"
+            },
+            "ipv4": {
+              "additionalProperties": false,
+              "properties": {
+                "numAddressesPerInstance": {
+                  "default": 1,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "subnetId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "numAddressesPerInstance"
+              ],
+              "type": "object"
+            },
+            "numInstances": {
+              "default": 1,
+              "maximum": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "extVirtualLink",
+            "numInstances",
+            "ipv4"
+          ],
+          "type": "object"
+        },
+        "pl-3_vipfrontend2": {
+          "additionalProperties": false,
+          "properties": {
+            "extVirtualLink": {
+              "default": "vipfrontend2",
+              "enum": [
+                "vipfrontend2"
+              ],
+              "type": "string"
+            },
+            "ipv4": {
+              "additionalProperties": false,
+              "properties": {
+                "numAddressesPerInstance": {
+                  "default": 1,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "subnetId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "numAddressesPerInstance"
+              ],
+              "type": "object"
+            },
+            "numInstances": {
+              "default": 1,
+              "maximum": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "extVirtualLink",
+            "numInstances",
+            "ipv4"
+          ],
+          "type": "object"
+        },
+        "pl-3_vipfrontend3": {
+          "additionalProperties": false,
+          "properties": {
+            "extVirtualLink": {
+              "default": "vipfrontend3",
+              "enum": [
+                "vipfrontend3"
+              ],
+              "type": "string"
+            },
+            "ipv4": {
+              "additionalProperties": false,
+              "properties": {
+                "numAddressesPerInstance": {
+                  "default": 1,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "subnetId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "numAddressesPerInstance"
+              ],
+              "type": "object"
+            },
+            "numInstances": {
+              "default": 1,
+              "maximum": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "extVirtualLink",
+            "numInstances",
+            "ipv4"
+          ],
+          "type": "object"
+        },
+        "pl-4_vipfrontend1": {
+          "additionalProperties": false,
+          "properties": {
+            "extVirtualLink": {
+              "default": "vipfrontend1",
+              "enum": [
+                "vipfrontend1"
+              ],
+              "type": "string"
+            },
+            "ipv4": {
+              "additionalProperties": false,
+              "properties": {
+                "numAddressesPerInstance": {
+                  "default": 1,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "subnetId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "numAddressesPerInstance"
+              ],
+              "type": "object"
+            },
+            "numInstances": {
+              "default": 1,
+              "maximum": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "extVirtualLink",
+            "numInstances",
+            "ipv4"
+          ],
+          "type": "object"
+        },
+        "pl-4_vipfrontend2": {
+          "additionalProperties": false,
+          "properties": {
+            "extVirtualLink": {
+              "default": "vipfrontend2",
+              "enum": [
+                "vipfrontend2"
+              ],
+              "type": "string"
+            },
+            "ipv4": {
+              "additionalProperties": false,
+              "properties": {
+                "numAddressesPerInstance": {
+                  "default": 1,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "subnetId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "numAddressesPerInstance"
+              ],
+              "type": "object"
+            },
+            "numInstances": {
+              "default": 1,
+              "maximum": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "extVirtualLink",
+            "numInstances",
+            "ipv4"
+          ],
+          "type": "object"
+        },
+        "pl-4_vipfrontend3": {
+          "additionalProperties": false,
+          "properties": {
+            "extVirtualLink": {
+              "default": "vipfrontend3",
+              "enum": [
+                "vipfrontend3"
+              ],
+              "type": "string"
+            },
+            "ipv4": {
+              "additionalProperties": false,
+              "properties": {
+                "numAddressesPerInstance": {
+                  "default": 1,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "subnetId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "numAddressesPerInstance"
+              ],
+              "type": "object"
+            },
+            "numInstances": {
+              "default": 1,
+              "maximum": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "extVirtualLink",
+            "numInstances",
+            "ipv4"
+          ],
+          "type": "object"
+        },
+        "pl_scalable_vipfrontend1": {
+          "additionalProperties": false,
+          "properties": {
+            "extVirtualLink": {
+              "default": "vipfrontend1",
+              "enum": [
+                "vipfrontend1"
+              ],
+              "type": "string"
+            },
+            "ipv4": {
+              "additionalProperties": false,
+              "properties": {
+                "numAddressesPerInstance": {
+                  "default": 1,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "subnetId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "numAddressesPerInstance"
+              ],
+              "type": "object"
+            },
+            "numInstances": {
+              "default": 30,
+              "maximum": 30,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "extVirtualLink",
+            "numInstances",
+            "ipv4"
+          ],
+          "type": "object"
+        },
+        "pl_scalable_vipfrontend2": {
+          "additionalProperties": false,
+          "properties": {
+            "extVirtualLink": {
+              "default": "vipfrontend2",
+              "enum": [
+                "vipfrontend2"
+              ],
+              "type": "string"
+            },
+            "ipv4": {
+              "additionalProperties": false,
+              "properties": {
+                "numAddressesPerInstance": {
+                  "default": 1,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "subnetId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "numAddressesPerInstance"
+              ],
+              "type": "object"
+            },
+            "numInstances": {
+              "default": 30,
+              "maximum": 30,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "extVirtualLink",
+            "numInstances",
+            "ipv4"
+          ],
+          "type": "object"
+        },
+        "pl_scalable_vipfrontend3": {
+          "additionalProperties": false,
+          "properties": {
+            "extVirtualLink": {
+              "default": "vipfrontend3",
+              "enum": [
+                "vipfrontend3"
+              ],
+              "type": "string"
+            },
+            "ipv4": {
+              "additionalProperties": false,
+              "properties": {
+                "numAddressesPerInstance": {
+                  "default": 1,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "subnetId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "numAddressesPerInstance"
+              ],
+              "type": "object"
+            },
+            "numInstances": {
+              "default": 30,
+              "maximum": 30,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "extVirtualLink",
+            "numInstances",
+            "ipv4"
+          ],
+          "type": "object"
+        },
+        "sc-1_om": {
+          "additionalProperties": false,
+          "properties": {
+            "extVirtualLink": {
+              "default": "om",
+              "enum": [
+                "om"
+              ],
+              "type": "string"
+            },
+            "ipv4": {
+              "additionalProperties": false,
+              "properties": {
+                "fixedAddresses": {
+                  "type": "string"
+                },
+                "numAddressesPerInstance": {
+                  "default": 1,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "subnetId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "numAddressesPerInstance",
+                "fixedAddresses"
+              ],
+              "type": "object"
+            },
+            "numInstances": {
+              "default": 1,
+              "maximum": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "extVirtualLink",
+            "numInstances",
+            "ipv4"
+          ],
+          "type": "object"
+        },
+        "sc-2_om": {
+          "additionalProperties": false,
+          "properties": {
+            "extVirtualLink": {
+              "default": "om",
+              "enum": [
+                "om"
+              ],
+              "type": "string"
+            },
+            "ipv4": {
+              "additionalProperties": false,
+              "properties": {
+                "fixedAddresses": {
+                  "type": "string"
+                },
+                "numAddressesPerInstance": {
+                  "default": 1,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "subnetId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "numAddressesPerInstance",
+                "fixedAddresses"
+              ],
+              "type": "object"
+            },
+            "numInstances": {
+              "default": 1,
+              "maximum": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "extVirtualLink",
+            "numInstances",
+            "ipv4"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "pl-3_vipfrontend1",
+        "pl-3_vipfrontend2",
+        "pl-3_vipfrontend3",
+        "pl-4_vipfrontend1",
+        "pl-4_vipfrontend2",
+        "pl-4_vipfrontend3",
+        "pl_scalable_vipfrontend1",
+        "pl_scalable_vipfrontend2",
+        "pl_scalable_vipfrontend3",
+        "sc-1_om",
+        "sc-2_om"
+      ],
+      "type": "object"
+    },
+    "extManagedVirtualLinks": {
+      "additionalProperties": false,
+      "description": "Parameters for VNF internal virtual links that are pre-created.\nNote that this package does not support pre-created internal virtual links, so there are no parameters.\n",
+      "properties": {},
+      "type": "object"
+    },
+    "extVirtualLinks": {
+      "additionalProperties": false,
+      "description": "Parameters for VNF external virtual links.\n\nnetworkId: The name or id of an existing network in the VIM. ",
+      "properties": {
+        "om": {
+          "additionalProperties": false,
+          "properties": {
+            "networkId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "networkId"
+          ],
+          "type": "object"
+        },
+        "vipfrontend1": {
+          "additionalProperties": false,
+          "properties": {
+            "networkId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "networkId"
+          ],
+          "type": "object"
+        },
+        "vipfrontend2": {
+          "additionalProperties": false,
+          "properties": {
+            "networkId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "networkId"
+          ],
+          "type": "object"
+        },
+        "vipfrontend3": {
+          "additionalProperties": false,
+          "properties": {
+            "networkId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "networkId"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "om",
+        "vipfrontend1",
+        "vipfrontend2",
+        "vipfrontend3"
+      ],
+      "type": "object"
+    },
+    "flavourId": {
+      "default": "default",
+      "description": "VNF deployment flavour",
+      "enum": [
+        "default"
+      ],
+      "type": "string"
+    },
+    "instantiationLevelId": {
+      "default": "instantiation_level_small",
+      "description": "Instantiation level. If omitted, the default level (instantiation_level_small) will be used.\nThe following levels are available:\n--------------------------------------------------------------------------\ninstantiation_level_small:\n  2 Controller, 2 Payload\n--------------------------------------------------------------------------\ninstantiation_level_medium:\n  2 Controller, 10 Payload\n--------------------------------------------------------------------------\ninstantiation_level_large:\n  2 Controller, 22 Payload\n--------------------------------------------------------------------------\n",
+      "enum": [
+        "instantiation_level_small",
+        "instantiation_level_medium",
+        "instantiation_level_large"
+      ],
+      "type": "string"
+    },
+    "vimConnectionInfo": {
+      "additionalProperties": false,
+      "description": "Select a VIM which is preconfigured in the VNFM. If using the ETSI SOL002 (Ve-Vnfm) REST API for instantiation, currently this entry cannot be used and must be left blank. In that scenario, the default VIM of the VNFM will be used and selecting another VIM is not possible.",
+      "properties": {
+        "vimId": {
+          "description": "Name of VIM, as configured in VNFM.",
+          "type": "string"
+        },
+        "vimType": {
+          "description": "Type of VIM.",
+          "enum": [
+            "CEE",
+            "OPENSTACK",
+            "VCD"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "vnfInstanceDescription": {
+      "description": "VNF instance description. Free text to describe the VNF instance, between 0 and 1000 characters.",
+      "type": "string"
+    },
+    "vnfInstanceName": {
+      "description": "VNF instance name. If using VNFM GUI, the value can be provided there at deployment. It is strongly recommended to use only alphanumericals, dashes and underscores. Maximum 255 characters.",
+      "type": "string"
+    },
+    "vnfdId": {
+      "default": "501a9928-d065-4ce9-b158-3b9645e74332",
+      "description": "Do NOT change this value.\nId of the VNF package to instantiate the VNF from.\nA new input file must be generated for each VNF package.",
+      "enum": [
+        "501a9928-d065-4ce9-b158-3b9645e74332"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "vnfInstanceName",
+    "vnfInstanceDescription",
+    "flavourId",
+    "instantiationLevelId",
+    "extVirtualLinks",
+    "extConnectionPoints",
+    "vnfdId"
+  ],
+  "title": "Inputs for the instantiate operation",
+  "type": "object"
+}
